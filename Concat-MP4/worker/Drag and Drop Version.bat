@@ -1,6 +1,6 @@
 rem ffmpeg.exe -i %~d1%~p1%~n1.mp4 -c:v copy -c:a copy %~d1%~p1%~n1.mp4
 
-chcp 65001
+chcp 1252
 
 for %%i in (%*) do (echo file '%%i' >> feedlistTemp.txt)
 
