@@ -8,11 +8,6 @@ if defined winver (
 	chcp 1252
 )
 
-
-
-:after
-
-
 for %%i in (%*) do (echo file '%%i' >> feedlistTemp.txt)
 
 powershell -c (gc feedlistTemp.txt) -replace '\"', '' | sort | Set-content feedlist.txt
