@@ -1,6 +1,17 @@
 rem ffmpeg.exe -i %~d1%~p1%~n1.mp4 -c:v copy -c:a copy %~d1%~p1%~n1.mp4
 
-chcp 1252
+FOR /F "tokens=*" %%g IN ('ver ^| findstr /i "10\.0\."') do (SET winver="%%g")
+
+if defined winver (
+	chcp 65001
+) else (
+	chcp 1252
+)
+
+
+
+:after
+
 
 for %%i in (%*) do (echo file '%%i' >> feedlistTemp.txt)
 
