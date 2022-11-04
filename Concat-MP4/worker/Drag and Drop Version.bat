@@ -1,4 +1,13 @@
-rem ffmpeg.exe -i %~d1%~p1%~n1.mp4 -c:v copy -c:a copy %~d1%~p1%~n1.mp4
+@echo off
+
+cd %~dp0
+if not exist %~dp0..\..\bin\ffmpeg.exe (
+	echo FFmpeg not found, downloading...
+	timeout 3 >nul
+	powershell -c "Import-Module BitsTransfer ; Start-BitsTransfer 'https://drive.google.com/uc?export=download&id=1SFIIYJSomDBGKfuICx1EkFDu-SxiDIRq&confirm=t' %~dp0..\..\bin\ffmpeg.exe"
+	echo done!
+	timeout 2 >nul
+)
 
 FOR /F "tokens=*" %%g IN ('ver ^| findstr /i "10\.0\."') do (SET winver="%%g")
 
