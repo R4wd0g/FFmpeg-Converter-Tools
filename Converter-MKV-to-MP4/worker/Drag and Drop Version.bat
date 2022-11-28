@@ -9,4 +9,4 @@ if not exist %~dp0..\..\bin\ffmpeg.exe (
 	timeout 2 >nul
 )
 
-for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -c:v copy -c:a copy "%%~dpni" && del "%%~dpni.mkv" )
+for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -c:v copy -c:a copy "%%~dpni.mp4" && del "%%~dpni.mkv" )
