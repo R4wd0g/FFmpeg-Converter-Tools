@@ -1,6 +1,5 @@
 @echo off
 
-cd %~dp0
 if not exist %~dp0..\..\bin\ffmpeg.exe (
 	echo FFmpeg not found, downloading...
 	timeout 3 >nul
