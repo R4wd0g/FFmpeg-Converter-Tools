@@ -9,4 +9,4 @@ if not exist %~dp0..\..\bin\ffmpeg.exe (
 	timeout 2 >nul
 )
 
-for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -c:v libx265 -vtag hvc1 -c:a copy -threads 1 "%%~dpni_compressed.mp4" && del %%i && mv "%%~dpni_compressed.mp4" %%i) 
+for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -c:v libx265 -vtag hvc1 -c:a copy -threads 1 "%%~dpni_temp.mp4" && del %%i && mv "%%~dpni_temp.mp4" %%i) 
