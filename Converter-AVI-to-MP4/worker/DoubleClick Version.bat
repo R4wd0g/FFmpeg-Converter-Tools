@@ -9,6 +9,6 @@ if not exist %~dp0..\..\bin\ffmpeg.exe (
 	timeout 2 >nul
 )
 
-for %%i in (..\*.avi) do (%~dp0..\..\bin\ffmpeg -i "%%i" -c:v libx264 -preset slow -crf 18 -c:a aac -b:a 192k "%%~dpni.mp4" && del "%%i")
+for %%i in (..\.avi) do (%~dp0..\..\bin\ffmpeg -i "%%i" -c:v libx264 -preset slow -crf 18 -c:a aac -b:a 192k "%%~dpni.mp4" && del "%%i" && %~dp0..\..\bin\ffmpeg -i "%%~dpni.mp4" -c copy "%%~dpni_remux.mp4" && del "%%~dpni.mp4" && mv "%%~dpni_remux.mp4" "%%~dpni.mp4")
 
 

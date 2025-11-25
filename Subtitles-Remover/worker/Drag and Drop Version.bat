@@ -9,4 +9,4 @@ if not exist %~dp0..\..\bin\ffmpeg.exe (
 	timeout 2 >nul
 )
 
-for %%i in (..\*.mkv) do (%~dp0..\..\bin\ffmpeg -i "%%i" -vcodec copy -acodec copy -sn "%%~dpni_temp.mkv" && del "%%i" && mv "%%~dpni_temp.mkv" "%%i")
+for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -vcodec copy -acodec copy -sn "%%~dpni_temp.mkv" && del %%i && mv "%%~dpni_temp.mkv" %%i && %~dp0..\..\bin\ffmpeg -i %%i -c copy "%%~dpni_remux.mkv" && del %%i && mv "%%~dpni_remux.mkv" %%i)

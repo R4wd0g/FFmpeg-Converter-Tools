@@ -9,4 +9,4 @@ if not exist %~dp0..\..\bin\ffmpeg.exe (
 	timeout 2 >nul
 )
 
-for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -map 0 -c:v libx264 -crf 18 -vf format=yuv420p -c:a copy -threads 2 "%%~dpni_H.264%%~xi" && del %%i && mv "%%~dpni_H.264%%~xi" %%i) 
+for %%i in (%*) do (%~dp0..\..\bin\ffmpeg -i %%i -map 0 -c:v libx264 -crf 18 -vf format=yuv420p -c:a copy -threads 2 "%%~dpni_H.264%%~xi" && del %%i && mv "%%~dpni_H.264%%~xi" %%i && %~dp0..\..\bin\ffmpeg -i %%i -c copy "%%~dpni_remux%%~xi" && del %%i && mv "%%~dpni_remux%%~xi" %%i) 
