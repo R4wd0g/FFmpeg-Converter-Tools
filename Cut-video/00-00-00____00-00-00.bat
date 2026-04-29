@@ -11,17 +11,18 @@ if not exist "%FFMPEG%" (
 )
 
 set "interval=%~n0"
-for /f "tokens=1,2 delims=_" %%a in ("%interval%") do (
+set "interval=!interval:____= !"
+for /f "tokens=1,2 delims= " %%a in ("!interval!") do (
 	set "startRaw=%%a"
 	set "endRaw=%%b"
 )
 
 if not defined startRaw (
-	echo Nome do arquivo invalido. Use HH-MM-SS_HH-MM-SS
+	echo Nome do arquivo invalido. Use HH-MM-SS____HH-MM-SS
 	exit /b 1
 )
 if not defined endRaw (
-	echo Nome do arquivo invalido. Use HH-MM-SS_HH-MM-SS
+	echo Nome do arquivo invalido. Use HH-MM-SS____HH-MM-SS
 	exit /b 1
 )
 
@@ -50,31 +51,11 @@ set /a current=0
 for %%i in (%*) do (
 	set /a current+=1
 	echo Processando !current!/!total!: %%~nxi
-	set "ext=%%~xi"
-	if /i "!ext!"==".mp3" (
-		call :CutFile "%%~fi"
-	) else if /i "!ext!"==".m4a" (
-		call :CutFile "%%~fi"
-	) else if /i "!ext!"==".wav" (
-		call :CutFile "%%~fi"
-	) else if /i "!ext!"==".flac" (
-		call :CutFile "%%~fi"
-	) else if /i "!ext!"==".ogg" (
-		call :CutFile "%%~fi"
-	) else if /i "!ext!"==".opus" (
-		call :CutFile "%%~fi"
-	) else (
-		echo Formato nao suportado: %%~nxi
-	)
+	call :GetUniqueOutput "%%~fi"
+	"%FFMPEG%" -ss !start! -to !end! -i "%%~fi" -c copy "!uniqueOut!"
 )
 
 endlocal
-exit /b 0
-
-:CutFile
-set "input=%~1"
-call :GetUniqueOutput "%input%"
-"%FFMPEG%" -ss !start! -to !end! -i "%input%" -c copy "!uniqueOut!"
 exit /b 0
 
 :ValidateTime

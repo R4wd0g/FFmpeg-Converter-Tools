@@ -164,14 +164,14 @@ Arraste os arquivos → Solte sobre → worker/Drag and Drop Version.bat
 
 ### Recortar vídeo (Cut-Video)
 ```batch
-1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06_00-00-15.bat)
+1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06____00-00-15.bat)
 2. Arraste o arquivo de vídeo sobre o .bat
 3. O arquivo recortado sera salvo com sufixo -cut
 ```
 
 ### Recortar audio (Cut-Audio)
 ```batch
-1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06_00-00-15.bat)
+1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06____00-00-15.bat)
 2. Arraste o arquivo de audio sobre o .bat
 3. O arquivo recortado sera salvo com sufixo -cut
 ```
