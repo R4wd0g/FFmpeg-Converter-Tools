@@ -73,6 +73,16 @@ Converte áudio de OGG para MP3.
 - **Entrada**: Arquivos `.ogg`
 - **Saída**: Arquivos `.mp3`
 
+### Cut-Video
+Recorta trechos de vídeo com base no intervalo definido no nome do `.bat`.
+- **Entrada**: Arraste o arquivo de vídeo para o `.bat`
+- **Saída**: Arquivo no mesmo diretório com sufixo `-cut` (ou `-cut-2`, `-cut-3`...)
+
+### Cut-Audio
+Recorta trechos de áudio com base no intervalo definido no nome do `.bat`.
+- **Entrada**: Arquivos `.mp3`, `.m4a`, `.wav`, `.flac`, `.ogg`, `.opus`
+- **Saída**: Arquivo no mesmo diretório com sufixo `-cut` (ou `-cut-2`, `-cut-3`...)
+
 ### Remuxer
 Re-encapsula vídeos em seu container original sem re-codificação, garantindo integridade do arquivo.
 - **Entrada**: Qualquer formato suportado
@@ -152,6 +162,20 @@ Arraste os arquivos → Solte sobre → worker/Drag and Drop Version.bat
 3. Todos os arquivos serão remuxados
 ```
 
+### Recortar vídeo (Cut-Video)
+```batch
+1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06_00-00-15.bat)
+2. Arraste o arquivo de vídeo sobre o .bat
+3. O arquivo recortado sera salvo com sufixo -cut
+```
+
+### Recortar audio (Cut-Audio)
+```batch
+1. Renomeie o .bat para o intervalo desejado (ex.: 00-00-06_00-00-15.bat)
+2. Arraste o arquivo de audio sobre o .bat
+3. O arquivo recortado sera salvo com sufixo -cut
+```
+
 ## ⚠️ Considerações Importantes
 
 - **Backup**: Sempre faça backup dos arquivos originais antes do processamento
@@ -168,5 +192,7 @@ Arraste os arquivos → Solte sobre → worker/Drag and Drop Version.bat
 | Converter-AVI-to-MP4 | H.264 (AVC) | AAC 192k | MP4 |
 | Converter-H.265-to-H.264 | H.264 (AVC) | Copy | MKV |
 | Converter-MKV-to-MP4 | Copy | Copy | MP4 |
+| Cut-Video | Copy | Copy | Original |
+| Cut-Audio | N/A | Copy | Original |
 | Remuxer | Copy | Copy | Original |
 
