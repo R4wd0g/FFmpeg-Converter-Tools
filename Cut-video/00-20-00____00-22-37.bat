@@ -5,7 +5,7 @@ set "FFMPEG=%~dp0..\bin\ffmpeg.exe"
 if not exist "%FFMPEG%" (
 	echo FFmpeg nao encontrado, baixando...
 	timeout 3 >nul
-	powershell -c "Import-Module BitsTransfer ; Start-BitsTransfer 'https://drive.google.com/uc?export=download&id=1SFIIYJSomDBGKfuICx1EkFDu-SxiDIRq&confirm=t' '%FFMPEG%'"
+	powershell -c "Import-Module BitsTransfer ; Start-BitsTransfer 'https://drive.usercontent.google.com/download?id=1SFIIYJSomDBGKfuICx1EkFDu-SxiDIRq&export=download&confirm=t&uuid=543c0d7f-eedf-4d1b-86c1-f9713c0f14b5' '%FFMPEG%'"
 	echo pronto!
 	timeout 2 >nul
 )
